@@ -1,0 +1,11 @@
+{
+    "Parameters": {
+        "Application": "s3-upload-microservice",
+        "Description": "S3 file upload microservice",
+        "Environment": "Production",
+        "LambdaTimeout": 20,
+        "LambdaMemorySize": 128,
+        "LambdaEnvSlackBotToken": "",
+        "LambdaEnvSlackChannelId": ""
+    }
+}

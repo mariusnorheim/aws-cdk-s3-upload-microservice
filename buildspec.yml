@@ -1,0 +1,21 @@
+# use this for multi account deployments along with
+# the parameter file in "params" folder
+version: "0.2"
+phases:
+    build:
+        commands:
+            # install cdk npm packages
+            - npm i
+            # build lambdas
+            - cd ${CODEBUILD_SRC_DIR}/lambdas/s3-upload
+            - go mod init lambdas/s3-upload
+            - go mod download
+            - GOOS=linux GOARCH=amd64 go build -o bootstrap
+            - cd ${CODEBUILD_SRC_DIR}/lambdas/slack-notification
+            - go mod init lambdas/slack-notification
+            - go mod download
+            - GOOS=linux GOARCH=amd64 go build -o bootstrap
+            # cdk deploy
+            - cd ${CODEBUILD_SRC_DIR}
+            - npm run cdk -- bootstrap aws://$TARGET_ACCOUNT/$AWS_REGION --qualifier cdktwo --toolkit-stack-name CDKTwoToolkit --force
+            - npm run cdk -- deploy "*" --require-approval never
