@@ -65,8 +65,7 @@ export class S3UploadServiceStackStack extends cdk.Stack {
             iam.ManagedPolicy.fromAwsManagedPolicyName("AmazonS3FullAccess"),
         );
 
-        // slack notifier lambda function - send alert to slack channel if the endpoints defined
-        // in environment variable does not return a 200 status code
+        // slack notifier lambda function - send alert to slack channel if uploading of file fails
         const notificationFn = new LambdaFunction(this, "s3-upload-notification-lambda", {
             name: "s3-upload-notification",
             description: "Lambda for alert notification at slack if uploads fail",
