@@ -3,6 +3,9 @@
 *.d.ts
 node_modules
 
+# exclude app
+!app/**.js
+
 # go binaries
 lambdas/**/bootstrap
 
