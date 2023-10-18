@@ -1,9 +1,10 @@
-# Welcome to your CDK TypeScript project
+# aws-cdk-s3-upload-microservice
+A service that uploads a file to s3, with a slack notification function that will execute if the upload fails.
+Written in Go (lambdas), Typescript (cdk) and Javascript (client)
 
-You should explore the contents of this project. It demonstrates a CDK app with an instance of a stack (`NewStack`)
-which contains an Amazon SQS queue that is subscribed to an Amazon SNS topic.
-
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+The client will zip a folder of your choice and send the file to the microservice. Be aware of size limits towards AWS Lambdas (~6mb).
+You might need to set account vars in bin/cdk.ts if they are not loaded into env vars "CDK_DEFAULT_ACCOUNT" and "CDK_DEFAULT_REGION"
+Deployed with "cdk deploy '*'"
 
 ## Useful commands
 
