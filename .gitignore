@@ -3,8 +3,8 @@
 *.d.ts
 node_modules
 
-# include js files in "lambdas" directory
-!lambdas/**/*.js
+# go binaries
+lambdas/**/bootstrap
 
 # CDK asset staging directory
 .cdk.staging
